@@ -135,6 +135,7 @@ function tabNumber2(init_tab_load)
 
 $(document).on('change keyup paste', "textarea", function () {
     console.log("text change trigg");
+    setUnsavedChanges(true);
     updateText(this.id);
     
 });
