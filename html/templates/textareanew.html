@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    {% include 'google-analytics.html' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Your secure text</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.toast.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+
+    <meta name="robots" content="noindex">
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/favicon/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/favicon/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/favicon/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/favicon/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/favicon/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/favicon/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/favicon/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/favicon/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'assets/favicon/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'assets/favicon/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/favicon/ms-icon-144x144.png'%}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body style="background-color: rgb(231,231,231);">
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark text-center">
+        <div class="container-fluid"><a class="navbar-brand secure-text-logo" href="#"><i class="fa fa-lock"></i>&nbsp; Secure Text</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse text-center flex-row-reverse flex-shrink-0 flex-wrap textarea-nav" id="navcol-1"><a href="{% url 'report_page' %}"><i data-toggle="tooltip" class="fa fa-bug fa-lg" style="color: rgb(225,5,5);" title="Report issue"></i></a>
+                <ul class="nav navbar-nav float-right flex-row flex-grow-0 justify-content-around">
+                    <li class="nav-item" role="presentation"><button class="btn btn-success option-btns" id="save-btn" type="button">Save</button></li>
+                    <li class="nav-item" role="presentation"><button class="btn btn-success option-btns" id="reload-btn" type="button" style="background-color: rgb(242,105,46);">Reload</button></li>
+                    <li class="nav-item" role="presentation"><button class="btn btn-success option-btns" id="change-password-btn" type="button" style="background-color: rgb(34,141,201);">Change password</button></li>
+                    <li class="nav-item" role="presentation"><button class="btn btn-success option-btns" id="delete-btn" type="button" style="background-color: rgb(170,43,43);">Delete</button></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="row options-pane">
+        <div class="col-4"><button style="background-color:#000" class="btn btn-info newtab-btn" type="button" onclick="newTab2(true)">+ New</button></div>
+        <div class="col text-right"><i onclick="closeTab()" class="fa fa-close" id="closetab-btn" title="close tab." style="color: rgb(249,6,6);font-size: 23px;"></i></div>
+    </div>
+    <div class="row text-area">
+        <div class="col-4 tabs-col"><div class="tab">
+    <button id="tab-btn-1" class="tablinks active" onclick="switchTab(this.id)">Tab1</button>
+</div>
+
+</div>
+        <div class="col textarea-col">
+            <div class="tab-content"><textarea class="border rounded actual-textarea tab-pane active" id="tab-1" placeholder="Write your text here..." spellcheck="false"></textarea></div>
+        </div>
+    </div><div role="dialog" id="change-password" tabindex="-1" class="modal fade" style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Change password</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p>Enter password : <input type="password" id="new-password" class="border rounded" /></p>
+                <p>Re-enter password : <input type="password" id="new-password-confirm" class="border rounded" /></p>
+            </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+        </div>
+    </div>
+</div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+    <script src="{% static 'assets/js/aes.js' %}"></script>
+    <script src="{% static 'assets/js/sha512.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.toast.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script src="{% static 'assets/js/onblur.js' %}"></script>
+    <script src="{% static 'assets/js/popupdisplay.js' %}"></script>
+    <script src="{% static 'assets/js/tabhandler.js' %}"></script>
+    <script src="{% static 'assets/js/tabhandler2.js' %}"></script>
+    <script src="{% static 'assets/js/open_site.js' %}"></script>
+    <script src="{% static 'assets/js/textformat.js' %}"></script>
+</body>
+
+</html>
