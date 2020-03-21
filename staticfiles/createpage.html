@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    {% include 'google-analytics.html' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create your site</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.toast.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+
+    <meta name="robots" content="noindex">
+
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/favicon/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/favicon/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/favicon/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/favicon/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/favicon/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/favicon/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/favicon/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/favicon/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'assets/favicon/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'assets/favicon/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/favicon/ms-icon-144x144.png'%}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <section class="align-items-center align-content-center">
+        <div class="row text-center">
+            <div class="col text-center">
+                <h2><strong>Site is available!</strong></h2>
+                <h3>Choose a password to encrypt your site.</h3><input id="password-field" class="border rounded shadow-sm password-field" type="password" placeholder="choose a password..." autofocus=""><input id="confirmpassword-field" class="border rounded shadow-sm password-field" type="password" placeholder="Re-enter your password..."
+                    autofocus="">
+                <p class="info-text">Use a strong password to stay more secure.<br></p>
+            </div>
+        </div>
+        <div class="row text-center align-items-center align-content-center">
+            <div class="col offset-xl-0 text-center align-items-center align-content-center btn-col"><button id="create-btn" class="btn btn-primary btn-createsite" type="button">create site</button></div>
+        </div>
+    </section>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+    <script src="{% static 'assets/js/aes.js' %}"></script>
+    <script src="{% static 'assets/js/sha512.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.toast.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script src="{% static 'assets/js/onblur.js' %}"></script>
+    <script src="{% static 'assets/js/popupdisplay.js' %}"></script>
+    <script src="{% static 'assets/js/tabhandler.js' %}"></script>
+    <script src="{% static 'assets/js/tabhandler2.js' %}"></script>
+    <script src="{% static 'assets/js/open_site.js' %}"></script>
+    <script src="{% static 'assets/js/textformat.js' %}"></script>
+
+</body>
+
+</html>

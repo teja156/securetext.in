@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    {% include 'google-analytics.html' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Save your texts/notes securely on the go!</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+
+    <meta name="keywords" content="secure storage, save notes online, online text saving, secure text, share texts online, protected text, save texts securely, text save online ">
+    <meta name="robots" content="index, nofollow">
+    <meta name="description" content="Securely save your texts or notes by creating your own private area on this website and then protect it with a password. Access your saved texts from anywhere by just going to your link and decrypt it with your password. Your password or your text never leaves your browser, that's the magic!">
+
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/favicon/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/favicon/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/favicon/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/favicon/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/favicon/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/favicon/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/favicon/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/favicon/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'assets/favicon/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'assets/favicon/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/favicon/ms-icon-144x144.png'%}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark">
+        <div class="container-fluid"><a class="navbar-brand secure-text-logo" href="#"><i class="fa fa-lock"></i>&nbsp; Secure Text</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav float-right flex-grow-1 justify-content-end">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'home_page' %}">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'how-it-works' %}">How it works</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'about_page' %}">About</a></li>
+                    <li class="nav-item" role="presentation" data-bs-hover-animate="rubberBand"></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <section class="general-area home">
+        <h1><strong>Save your texts securely on the go!</strong></h1>
+        <h3>Create a site and store your texts/notes, then protect them with a password.</h3>
+        <div class="row securetxt-page-creator">
+            <div class="col">
+                <h1 class="secure-text-site">securetext.in/<input id="create-site-box" type="text" class="bg-white border rounded border-dark shadow-sm" placeholder="write.." 
+       onblur="onBlurEvent(this)"/>
+</h1><button class="btn btn-primary go-btn" type="button" onclick="goToSite()">go!</button></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>We don't save your texts, or your passwords on our server. All we save is the encrypted form of the text which makes no sense without the password.<br>Your password never leaves your browser. We also don't know who these texts belong to,
+                    you are anonymous using this site.<br>You may want to know more about <a href="/how-it-works">how this site works.</a></p>
+            </div>
+        </div>
+    </section>
+    <script>
+        function goToSite()
+        {
+            var site_url = document.getElementById("create-site-box").value;
+            var regex = "^[a-zA-Z 0-9\_\-]*$"
+            if(site_url.match(regex)!=null)
+            {
+                window.location.href = "/"+site_url;
+            }
+            else
+            {
+                alert("Special characters other than - and _ are not allowed");
+            }
+            
+        }
+    </script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script src="{% static 'assets/js/onblur.js' %}"></script>
+    <script src="{% static 'assets/js/popupdisplay.js' %}"></script>
+    <script src="{% static 'assets/js/tabhandler.js' %}"></script>
+    <script src="{% static 'assets/js/tabhandler2.js' %}"></script>
+    <script src="{% static 'assets/js/textformat.js' %}"></script>
+</body>
+
+</html>
