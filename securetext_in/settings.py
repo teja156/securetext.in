@@ -27,7 +27,7 @@ DEBUG = False
 
 ADMIN_ENABLED = False
 
-ALLOWED_HOSTS = ['secure-text.herokuapp.com','securetext.in','localhost','127.0.0.1','techraj156.com']
+ALLOWED_HOSTS = ['secure-text.herokuapp.com','www.securetext.in','localhost','127.0.0.1','techraj156.com']
 
 
 # Application definition
