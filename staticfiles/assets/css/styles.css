@@ -353,3 +353,21 @@ button.option-btns {
 #google-form {
 }
 
+@media (max-width: 978px) {
+
+    .row.options-pane {
+      margin-right: 20px;
+      margin-left: 20px;
+      margin-top: 0px;
+    }
+
+    .row.text-area {
+      margin-right: 20px;
+      margin-left: 20px;
+      height: 100vh;
+      margin-top: 3px;
+    }
+
+    
+}
+

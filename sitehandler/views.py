@@ -35,10 +35,13 @@ def save_site(request):
 
 	if(siteExists==False):
 		#new site
-		site = Sites(site_url = site_url, cipher = cipher, hashcontent=initHash)
-		site.save()
+		if(cipher!=""):
+			site = Sites(site_url = site_url, cipher = cipher, hashcontent=initHash)
+			site.save()
 
-		return JsonResponse({"status":"success"})
+			return JsonResponse({"status":"success"})
+		else:
+			return JsonResponse({"status":"deleted"})
 
 
 	else:
@@ -46,10 +49,14 @@ def save_site(request):
 		hashContent = siteExists[0].hashcontent
 		if(initHash==hashContent):
 			#update the cipher and the hash content
-			siteExists[0].cipher = cipher
-			siteExists[0].hashcontent = newHash
-			siteExists[0].save()
-			return JsonResponse({"status":"success"})
+			if(cipher!=""):
+				siteExists[0].cipher = cipher
+				siteExists[0].hashcontent = newHash
+				siteExists[0].save()
+				return JsonResponse({"status":"success"})
+			else:
+				siteExists[0].delete()
+				return JsonResponse({"status":"deleted"})
 		else:
 			return JsonResponse({"status":"fail"})
 

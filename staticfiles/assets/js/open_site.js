@@ -201,8 +201,22 @@ function saveSite()
 	var allText = collectText();
     console.log("collected text : "+allText);
 
-    //encrypt text
-	var eContent = CryptoJS.AES.encrypt(allText,password).toString();
+    //encrypt the text
+    var eContent = CryptoJS.AES.encrypt(allText,password).toString();
+
+    if(allText=="")
+    {
+        //show alert that empty text site will be deleted
+        var conf = confirm("No text is stored on this site, this will automatically delete your site from our server. Do you want to continue?");
+        if(!conf)
+        {
+            return;
+        }
+        else
+        {
+            eContent = "";
+        }
+    }
 
     
     if(initHash=="")
@@ -215,12 +229,7 @@ function saveSite()
     else
     {
         newHash = CryptoJS.SHA512(allText + CryptoJS.SHA512(password).toString()).toString();
-    }
-
-
-    
-    
-    
+    }    
 	
 	$.ajax(
             {
@@ -250,6 +259,18 @@ function saveSite()
 
                         initHash = newHash;
                 	}
+                    else if(respData.status=='deleted')
+                    {
+                        //Site deleted because empty text is attempted to be saved
+                        $.toast({
+                            heading: 'Success',
+                            text: 'Site deleted!',
+                            showHideTransition: 'slide',
+                            icon: 'success'
+                        });
+                        setTimeout(function(){ window.location.href = "/"; }, 2000);
+
+                    }
                 	else
                 	{
                 		$.toast({
@@ -257,7 +278,7 @@ function saveSite()
 						    text: 'Save failed!',
 						    showHideTransition: 'fade',
 						    icon: 'error'
-						})
+						});
                 	}
                     
 
