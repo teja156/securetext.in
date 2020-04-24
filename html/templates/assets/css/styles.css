@@ -368,6 +368,7 @@ button.option-btns {
   }
 }
 
+/* Floating button changes made from here */
 
 .middle {
   position: absolute;
@@ -376,6 +377,7 @@ button.option-btns {
   width: 100%;
   text-align: center;
   font-weight: 900;
+  margin-bottom: 7px;
 }
 
 .fbtn {

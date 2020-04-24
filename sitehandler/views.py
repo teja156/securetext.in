@@ -26,6 +26,7 @@ def load_layout(request):
 
 @csrf_exempt
 def save_site(request):
+	CURRENT_VERSION = 2
 	site_url = request.POST['site_url']
 	cipher = request.POST['cipher']
 	initHash = request.POST['initHash']
@@ -36,7 +37,7 @@ def save_site(request):
 	if(siteExists==False):
 		#new site
 		if(cipher!=""):
-			site = Sites(site_url = site_url, cipher = cipher, hashcontent=initHash)
+			site = Sites(site_url = site_url, cipher = cipher, hashcontent=initHash,version=CURRENT_VERSION)
 			site.save()
 
 			return JsonResponse({"status":"success"})
@@ -76,16 +77,19 @@ def check_site(site_url):
 def load_site(request):
 	site_url = request.POST['site_url']
 	site = Sites.objects.filter(site_url=site_url)[0]
-	return JsonResponse({'site_url':site_url,'cipher':site.cipher})
+	return JsonResponse({'site_url':site.site_url,'cipher':site.cipher})
 
 
 @csrf_exempt
 def delete_site(request):
 	site_url = request.POST['site_url']
 	initHash = request.POST['initHash']
+	s = check_site(site_url)
+	
+	if s==False:
+		return JsonResponse({"status":"fail"})
 
-	s = Sites.objects.filter(site_url=site_url)[0]
-
+	s=s[0]
 	if(s.hashcontent==initHash):
 		s.delete()
 		return JsonResponse({"status":"success"})

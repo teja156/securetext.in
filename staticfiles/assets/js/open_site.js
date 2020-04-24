@@ -54,6 +54,9 @@ var newHash = "";
 site_url = site_url.substr(1,site_url.length-2)
 var seperator = "acdcc9e377db73f8b3ae141353015db7c8141a659c465cb3f42ed93e3727e8d5ff4743c887a6816821789df7914749a1ff722455b26057b6058011f3ba8886b5";
 var unsaved = false;
+var salt = "~~securetext.in~~"; //stay safe from rainbow tables
+var initialText = "";
+// var initialPassword = password;
 
 window.onbeforeunload = function(){
   if(unsaved==true)
@@ -62,7 +65,8 @@ window.onbeforeunload = function(){
   }
 };
 
-$("#create-btn").click(function(){
+$(document).on('click', '#create-btn', function() {
+    // console.log("create btn trigg");
 
 	password = document.getElementById("password-field").value;
 	var confirm_password = document.getElementById("confirmpassword-field").value;
@@ -73,6 +77,7 @@ $("#create-btn").click(function(){
 	}
 	else
 	{
+
 		initLoadLayout();
 	}
 	
@@ -105,7 +110,7 @@ $(document).on('click', '.decrypt-btn', function() {
 //change-password-btn
 $(document).on('click', '.change-password-btn', function() {
   //re encrypt the text with the new password, and then send to server
-  console.log("change password");
+  // console.log("change password");
   $("#change-password").modal('show');
 });
 
@@ -124,16 +129,17 @@ $(document).on('click', '.delete-btn', function() {
 //change-password-confirm-btn -> button inside the modal
 $(document).on('click', '#change-password-confirm-btn', function() {
   //re encrypt the text with the new password, and then send to server
-  password = document.getElementById("new-password").value;
+  var password_tmp = document.getElementById("new-password").value;
   var confirm_password = document.getElementById("new-password-confirm").value;
-  if(password!=confirm_password || password=="")
+  if(password_tmp!=confirm_password || password_tmp=="")
   {
     alert("Passwords do not match");
   }
   else
   {
     //rencrypt and send to server
-    saveSite();
+    password = password_tmp;
+    saveSite(supressWarning=true);
   }
   $("#change-password").modal('hide');
 });
@@ -152,7 +158,7 @@ function initLoadLayout()
                 {
                     document.getElementsByTagName("html")[0].innerHTML = respData;
 
-                    console.log("layout loaded");
+                    // console.log("layout loaded");
 
                 },
                 error: function (jqXHR, status, err) {
@@ -175,31 +181,32 @@ function loadLayout(text)
                 {
                     document.getElementsByTagName("html")[0].innerHTML = respData;
 
-                    console.log("layout loaded");
+                    // console.log("layout loaded");
 
                     populateTabs(text,seperator);
 
                 },
                 error: function (jqXHR, status, err) {
-                    alert("Local error callback.");
+                    alert("Communication with server failed.");
                     return "error";
                   }
              });
 }
 
 
-function saveSite()
+function saveSite(supressWarning=false)
 {
 
-    if(initHash == (CryptoJS.SHA512(collectText() + CryptoJS.SHA512(password).toString()).toString()))
+    if(initialText == collectText() && !supressWarning)
     {
         alert("No changes made to the text");
         return;
     }
     
+
 	//Collect text from all the tabs
 	var allText = collectText();
-    console.log("collected text : "+allText);
+    // console.log("collected text : "+allText);
 
     //encrypt the text
     var eContent = CryptoJS.AES.encrypt(allText,password).toString();
@@ -221,14 +228,18 @@ function saveSite()
     
     if(initHash=="")
     {
-        initHash = CryptoJS.SHA512(allText + CryptoJS.SHA512(password).toString()).toString();
+        //new site
+        // initHash = CryptoJS.SHA512(allText + CryptoJS.SHA512(password).toString()).toString();
+        initHash = CryptoJS.SHA512(salt+password).toString();
         newHash = initHash;
-        console.log("Computed new hash");
+        // console.log("Computed new hash");
     }
 
     else
     {
-        newHash = CryptoJS.SHA512(allText + CryptoJS.SHA512(password).toString()).toString();
+        // newHash = CryptoJS.SHA512(allText + CryptoJS.SHA512(password).toString()).toString();
+        newHash = CryptoJS.SHA512(salt+password).toString();
+
     }    
 	
 	$.ajax(
@@ -245,7 +256,7 @@ function saveSite()
                 {
                 	respData = JSON.stringify(respData)
                 	respData = JSON.parse(respData)
-                    console.log(respData);
+                    // console.log(respData);
                 	if(respData.status=='success')
                 	{
                 		$.toast({
@@ -302,7 +313,7 @@ function reloadSite(cipher)
 {
 	
     var text = decryptContent(cipher,password);
-    console.log("decrypted : "+text);
+    // console.log("decrypted : "+text);
     if(text=="")
     {
         $.toast({
@@ -341,7 +352,7 @@ async function loadSite(cipher)
     else
     {
         //loadlayout
-        console.log("Decrypted : "+text);
+        // console.log("Decrypted : "+text);
         loadLayout(text);
     }
 
@@ -364,8 +375,8 @@ async function downloadSite(callback)
                 {
                     respData = JSON.stringify(respData);
                     respData = JSON.parse(respData);
-                    console.log("cipher response : "+respData.cipher);
-                    console.log("password : "+password);
+                    // console.log("cipher response : "+respData.cipher);
+                    // console.log("password : "+password);
                     //return respData.cipher;
                     callback(respData.cipher)
                 },
@@ -381,20 +392,23 @@ async function downloadSite(callback)
 
 function decryptContent(cipher,password)
 {
-    console.log("decrypting "+cipher+" with "+password);
+    // console.log("decrypting "+cipher+" with "+password);
 	try
 	{
 		var text = CryptoJS.AES.decrypt(cipher,password).toString(CryptoJS.enc.Utf8).trim();
+        initialText = text;
         //calculate initHash content value
-        initHash = CryptoJS.SHA512(text + CryptoJS.SHA512(password).toString()).toString();
-        console.log("decryptedContent: "+text);
+        // initHash = CryptoJS.SHA512(text + CryptoJS.SHA512(password).toString()).toString();
+        initHash = CryptoJS.SHA512(salt+password).toString();
+        // console.log("decryptedContent: "+text);
 		return text
 	}
 	catch(err)
 	{
-        console.log(err.toString());
+        // console.log(err.toString());
 		return ""
 	}
+
 	
 }
 

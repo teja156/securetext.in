@@ -95,7 +95,7 @@ SECURE_SSL_REDIRECT = True
 
 
 
-# #Deploy Database
+# # #Deploy Database
 import dj_database_url
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
@@ -126,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
