@@ -1,0 +1,373 @@
+.nav.navbar-nav.float-right.flex-grow-1.justify-content-end {
+  margin-right: 0px;
+  padding-right: 30px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+  font-size: 15px;
+  margin-right: 20px;
+  padding-right: 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link .secure-text-logo {
+  color: #fff;
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.navbar-dark .navbar-nav .nav-link .logo {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.navbar-dark .navbar-nav .nav-link logo {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.nav-search-bar {
+  margin-left: 80px;
+  text-indent: 10px;
+}
+
+body {
+  padding-top: 100px;
+}
+
+.h1, h1 {
+  font-size: 60px;
+}
+
+.general-area.home {
+  padding-top: 80px;
+  padding-right: 10px;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.navbar-dark .navbar-brand {
+  margin-left: 10px;
+}
+
+.h3, h3 {
+  font-size: 20px;
+  margin-top: 19px;
+}
+
+h3.website-name {
+  margin-left: 105px;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 30px;
+}
+
+.bg-white.border.rounded.border-dark.shadow-sm:focus {
+  margin-left: 8px;
+  text-indent: 6px;
+  width: 250px;
+  height: 40px;
+  font-size: 15px;
+}
+
+.bg-white.border.rounded.border-dark.shadow-sm {
+  margin-left: 8px;
+  text-indent: 6px;
+  width: 70px;
+  height: 40px;
+  font-size: 15px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+h1.secure-text-title {
+  font-size: 30px;
+}
+
+h1.secure-text-site {
+  font-size: 35px;
+  margin-top: -40px;
+}
+
+.col {
+}
+
+.row.extra-info {
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+}
+
+.h5, h5 {
+}
+
+.navbar-dark .navbar-nav .nav-link {
+}
+
+.nav.navbar-nav.float-right.flex-row.flex-grow-0.justify-content-around {
+  margin-left: 100px;
+}
+
+.row.tabs-row {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.row.text-area-box {
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 100vh;
+  margin-top: -80px;
+}
+
+.actual-text-area.text-tab {
+  width: 100%;
+}
+
+.col.textarea-col {
+  height: 90%;
+  margin-left: -47px;
+}
+
+.border.rounded.form-control-lg.actual-textarea {
+  resize: none;
+  width: 100%;
+  height: 100%;
+  font-size: 17px;
+  text-indent: 0px;
+  color: #635d5d;
+}
+
+.fa.fa-plus {
+}
+
+.col-1.add-btn-col {
+  align-content: end;
+  margin-top: 80px;
+}
+
+a:not([href]):hover {
+  cursor: pointer;
+}
+
+.tab-content {
+  height: 100%;
+}
+
+#tabs-area {
+  margin-left: -15px;
+}
+
+.password-field {
+  text-indent: 8px;
+  margin-top: 20px;
+  height: 40px;
+  width: 300px;
+  z-index: 5000;
+}
+
+.col {
+  margin-top: 0px;
+}
+
+.row.text-center.align-items-center.align-content-center {
+  margin-top: -80px;
+}
+
+.info-text {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.info-text {
+}
+
+.btn.btn-primary.go-btn {
+  margin-top: 10px;
+}
+
+.body-textarea {
+  padding-top: 0px;
+}
+
+.btn.btn-primary.decrypt-btn {
+  margin-top: 15px;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+  margin-right: 10px;
+  align-items: center;
+  align-content: center;
+}
+
+.row.text-center {
+  z-index: 2000;
+}
+
+.fade:not(.show) {
+  z-index: -100;
+}
+
+.row.text-area {
+  margin-right: 80px;
+  margin-left: 80px;
+  height: 100vh;
+  margin-top: 3px;
+}
+
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+/*  Style the buttons that are used to open the tab content  */
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/*  Change background color of buttons on hover  */
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/*  Create an active/current "tab button" class  */
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+/*  Style the tab content  */
+
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+}
+
+textarea {
+  resize: none;
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  padding-left: 3px;
+}
+
+div {
+}
+
+.row.options-pane {
+  margin-right: 80px;
+  margin-left: 80px;
+  margin-top: 0px;
+}
+
+.btn.btn-info.newtab-btn {
+}
+
+#navcol-1 {
+  margin-right: 80px;
+}
+
+.row.securetxt-page-creator {
+  margin-top: 77px;
+}
+
+.row {
+  margin-top: 60px;
+}
+
+.fa.fa-close {
+  cursor: pointer;
+}
+
+.col-4.tabs-col {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.col.offset-xl-0.align-items-center.align-content-center.btn-col {
+  margin-top: 80px;
+}
+
+.col.offset-xl-0.align-items-center.align-content-center.decrypt-col {
+  margin-top: 80px;
+}
+
+.howitworks {
+  margin-top: 0px;
+}
+
+.row.howitworks-row {
+  margin-top: 10px;
+}
+
+.option-btns {
+  border: none;
+}
+
+.text-left.how-it-works {
+  padding: 20px;
+}
+
+.how-it-works.h4 {
+  font-size: 1.5rem;
+  padding-left: 20px;
+}
+
+.row.row-implementation {
+  margin-top: 5px;
+}
+
+.fa.fa-bug.fa-lg {
+  cursor: pointer;
+}
+
+.fa.fa-bug.fa-lg {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+button.option-btns {
+  margin-top: 5px;
+}
+
+#google-form {
+}
+
+@media (max-width: 978px) {
+
+    .row.options-pane {
+      margin-right: 20px;
+      margin-left: 20px;
+      margin-top: 0px;
+    }
+
+    .row.text-area {
+      margin-right: 20px;
+      margin-left: 20px;
+      height: 100vh;
+      margin-top: 3px;
+    }
+
+    
+}
+

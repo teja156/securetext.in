@@ -225,7 +225,7 @@ a:not([href]):hover {
   height: 100%;
 }
 
-/*  Style the buttons that are used to open the tab content  */
+/* Style the buttons that are used to open the tab content */
 
 .tab button {
   display: block;
@@ -240,19 +240,19 @@ a:not([href]):hover {
   transition: 0.3s;
 }
 
-/*  Change background color of buttons on hover  */
+/* Change background color of buttons on hover */
 
 .tab button:hover {
   background-color: #ddd;
 }
 
-/*  Create an active/current "tab button" class  */
+/* Create an active/current "tab button" class */
 
 .tab button.active {
   background-color: #ccc;
 }
 
-/*  Style the tab content  */
+/* Style the tab content */
 
 .tabcontent {
   float: left;
@@ -269,9 +269,6 @@ textarea {
   width: 100%;
   font-size: 15px;
   padding-left: 3px;
-}
-
-div {
 }
 
 .row.options-pane {
@@ -353,21 +350,82 @@ button.option-btns {
 #google-form {
 }
 
+/* Change margin for mobile devices */
 @media (max-width: 978px) {
-
-    .row.options-pane {
-      margin-right: 20px;
-      margin-left: 20px;
-      margin-top: 0px;
-    }
-
-    .row.text-area {
-      margin-right: 20px;
-      margin-left: 20px;
-      height: 100vh;
-      margin-top: 3px;
-    }
-
-    
+  .row.options-pane {
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 0px;
+  }
 }
+
+@media (max-width: 978px) {
+  .row.text-area {
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 100vh;
+    margin-top: 3px;
+  }
+}
+
+
+.middle {
+  position: absolute;
+  top: 13%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
+}
+
+.fbtn {
+  display: inline-block;
+  width: 40px;
+  height: 35px;
+  /*background: #f1f1f1;*/
+  margin: 2px;
+  border-radius: 30%;
+  box-shadow: 0 5px 15px -5px #00000070;
+  color: #3498db;
+  /*overflow: hidden;*/
+  position: relative;
+}
+
+.fbtn i {
+  line-height: 33px;
+  font-size: 20px;
+  transition: 0.2s linear;
+}
+
+.fbtn:hover i {
+  transform: scale(1.3);
+  color: black;
+  cursor: pointer;
+}
+
+#save {
+  background: green;
+  color: white;
+}
+
+#reload {
+  background: orange;
+  color: white;
+}
+
+#passchange {
+  background: blue;
+  color: white;
+}
+
+#delete {
+  background: red;
+  color: white;
+}
+
+#report {
+  background: brown;
+  color: white;
+}
+
 

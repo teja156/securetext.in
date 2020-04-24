@@ -79,21 +79,21 @@ $("#create-btn").click(function(){
 });
 
 
-$(document).on('click', '#save-btn', function() {
+$(document).on('click', '.save-btn', function() {
     $.LoadingOverlay("show");
     saveSite();
     unsaved = false;
     $.LoadingOverlay("hide");
 });
 
-$(document).on('click', '#reload-btn', function() {
+$(document).on('click', '.reload-btn', function() {
   //loadLayout(reloadSite);
   $.LoadingOverlay("show");
   downloadSite(reloadSite); //download cipher and decrypt it
   $.LoadingOverlay("hide");
 });
 
-$(document).on('click', '#decrypt-btn', function() {
+$(document).on('click', '.decrypt-btn', function() {
   //decrypt
   $.LoadingOverlay("show");
   password = document.getElementById("password-field").value;
@@ -103,14 +103,14 @@ $(document).on('click', '#decrypt-btn', function() {
 });
 
 //change-password-btn
-$(document).on('click', '#change-password-btn', function() {
+$(document).on('click', '.change-password-btn', function() {
   //re encrypt the text with the new password, and then send to server
   console.log("change password");
   $("#change-password").modal('show');
 });
 
 
-$(document).on('click', '#delete-btn', function() {
+$(document).on('click', '.delete-btn', function() {
     var sitename = prompt("Are you sure you want to delete this site? If you confirm, please type in the site name(without slashes) and click OK");
     if(sitename==site_url)
     {
