@@ -19,8 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = "bla"
+SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = "bla"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -81,20 +81,20 @@ WSGI_APPLICATION = 'securetext_in.wsgi.application'
 
 
 
-#Development
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# #Development
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 
 # #Deploy Database
-# import dj_database_url
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+import dj_database_url
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 
